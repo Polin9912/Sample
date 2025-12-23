@@ -13,9 +13,10 @@ const Products = () => {
 const {loading,product,getProducts } = useContext(MyContext)
   const { name } = useParams();
   const [Products, setProduct] = useState(product);
-  const [price, setPrice] = useState(20);
   const [search, setSearch] = useState("");
   const [length, setlength] = useState("");
+const [minPrice, setMinPrice] = useState("");
+const [maxPrice, setMaxPrice] = useState("");
 
 
   const dispatch = useDispatch();
@@ -38,13 +39,25 @@ const {loading,product,getProducts } = useContext(MyContext)
     }
   }
 
-  const filterItems = () => {
-    const filterpriceproducts = product.filter(
-      (product) => product.price < price
-    );
+ const filterItems = () => {
+  let filtered = product;
 
-    setProduct(filterpriceproducts);
-  };
+  if (minPrice !== "") {
+    filtered = filtered.filter(
+      (item) => item.price >= Number(minPrice)
+    );
+  }
+
+  if (maxPrice !== "") {
+    filtered = filtered.filter(
+      (item) => item.price <= Number(maxPrice)
+    );
+  }
+
+  setProduct(filtered);
+  setlength(filtered.length);
+};
+
  
   useEffect(() => {
     fetchProduct();
@@ -70,18 +83,38 @@ const {loading,product,getProducts } = useContext(MyContext)
           </div>
 
           <div className="filterByPrice ">
-            <h2 className=" text-2xl font-bold ">Filter By Price</h2>
             <div className="filterInput my-2 ">
-              <input
-                onChange={(e) => setPrice(e.target.value)}
-                type="range"
-                id="price-range"
-                className="w-50 accent-indigo-600"
-                min="0"
-                max="20000"
-              ></input>
+             <div className="filterByPrice">
+  <h2 className="text-2xl font-bold">Filter By Price</h2>
+
+  <div className="flex gap-3 my-4">
+    <input
+      type="number"
+      placeholder="Min"
+      value={minPrice}
+      onChange={(e) => setMinPrice(e.target.value)}
+      className="w-1/2 border px-2 py-1 outline-none"
+    />
+
+    <input
+      type="number"
+      placeholder="Max"
+      value={maxPrice}
+      onChange={(e) => setMaxPrice(e.target.value)}
+      className="w-1/2 border px-2 py-1 outline-none"
+    />
+  </div>
+
+  <button
+    onClick={filterItems}
+    className="bg-blue-500 px-4 py-1 text-white"
+  >
+    Apply Filter
+  </button>
+</div>
+
             </div>
-            <div className=" flex justify-between my-4">
+            {/* <div className=" flex justify-between my-4">
               <button
                 onClick={() => filterItems()}
                 className=" bg-blue-500 px-4 text-white"
@@ -90,7 +123,7 @@ const {loading,product,getProducts } = useContext(MyContext)
               </button>
              
               <span>$20 - ${price}</span>
-            </div>
+            </div> */}
           </div>
 
           <div className="catagories my-9 md:my-10">

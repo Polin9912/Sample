@@ -86,13 +86,13 @@ const Navbaar = () => {
 
 
 
-                        { user && user?.user.email !== "yogeshnegi97@gmail.com" ? 
+                        { user && user?.user?.email !== "yogeshnegi97@gmail.com" ? 
                         <Link to={'/orders'}  onClick={()=>setShow(!show)} className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                         <BiShoppingBag size={25} className=" mr-2"/>
                             Orders
                         </Link> : ''}
 
-                        { user && user?.user.email !== "yogeshnegi97@gmail.com" ?
+                        { user && user?.user?.email !== "yogeshnegi97@gmail.com" ?
                         <Link  to={'/wishList'}  onClick={()=>setShow(!show)}  className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                         <BiHeart size={25} className=" mr-2"/>
                             WishList
@@ -133,7 +133,7 @@ const Navbaar = () => {
                 <h1 className="text-4xl font-bold font-heading"> Sports Mart</h1>
               </NavLink>
 
-              <ul className="hidden md:flex   px-4 mx-auto font-semibold font-heading space-x-12 ">
+              <ul className="hidden md:flex   px-4 mx-auto font-semibold font-heading space-x-12 mr-0.5 ">
                 <li>
                   <NavLink
                     to={"/products/Allproducts"}
@@ -173,7 +173,7 @@ const Navbaar = () => {
               </ul>
 
               <div className="hidden xl:flex items-center space-x-5  ">
-                {user && user?.user.email !== "yogeshnegi97@gmail.com" ? (
+                {user && user?.user?.email !== "yogeshnegi97@gmail.com" ? (
                   <ul>
                     <li>
                       <NavLink

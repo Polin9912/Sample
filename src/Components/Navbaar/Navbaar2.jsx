@@ -86,13 +86,13 @@ const Navbaar2 = () => {
 
 
 
-                        { user && user?.user.email !== "yogeshnegi97@gmail.com" ? 
+                        { user && user?.user?.email !== "yogeshnegi97@gmail.com" ? 
                         <Link to={'/orders'}  onClick={()=>setShow(!show)} className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                         <BiShoppingBag size={25} className=" mr-2"/>
                             Orders
                         </Link> : ''}
 
-                        { user && user?.user.email !== "yogeshnegi97@gmail.com" ?
+                        { user && user?.user?.email !== "yogeshnegi97@gmail.com" ?
                         <Link  to={'/wishList'}  onClick={()=>setShow(!show)}  className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                         <BiHeart size={25} className=" mr-2"/>
                             WishList
@@ -173,7 +173,7 @@ const Navbaar2 = () => {
               </ul>
 
               <div className="hidden xl:flex items-center space-x-5  ">
-                {user && user?.user.email !== "yogeshnegi97@gmail.com" ? (
+                {user && user?.user?.email !== "yogeshnegi97@gmail.com" ? (
                   <ul>
                     <li>
                       <NavLink
