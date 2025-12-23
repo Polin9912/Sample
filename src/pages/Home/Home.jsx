@@ -193,25 +193,30 @@ const Home = () => {
               >
 
                 <NavLink to={`/product/${product.id}`}>
-                  <div className="relative">
-                    <img
-                      src={product.image}
-                      alt="Product"
-                      className="h-80 w-72 object-cover rounded-t-xl"
-                    />
+                  <div className="relative overflow-hidden">
+  <img
+    src={product.image}
+    alt="Product"
+    className="h-80 w-72 object-cover rounded-t-xl"
+  />
 
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault(); 
-                          add(product);
-                        }}
-                        className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-black hover:text-white transition"
-                      >
-                        Direct order
-                      </button>
-                    </div>
-                  </div>
+  <div
+    className="
+      absolute inset-0  bg-black/40 translate-y-full  group-hover:translate-y-0 transition-transform duration-700   ease-in-out
+      flex items-center justify-center"
+  >
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        add(product);
+      }}
+      className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-black hover:text-white transition"
+    >
+      Direct order
+    </button>
+  </div>
+</div>
+
                 </NavLink>
 
                 <div className="px-4 py-3 w-72">
